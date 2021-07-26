@@ -93,8 +93,58 @@ public class Main { // 1-D Array
         System.out.println("Visitors that eligible to use springboard: "+ total[0]);
     }
 
+    public static int firstNeg(int[] arr) {
+        for (int i=0; i<arr.length; i++) {
+            if (arr[i] < 0) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static int negSequance(int[] arr) {
+        int neglen = 0;
+        int place = firstNeg(arr);
+        if (place < 0) {
+            return neglen;
+        } else {
+            for (int i=place; i<arr.length; i++) {
+                if (arr[i] < 0) {
+                    neglen++;
+                } else {
+                    return neglen;
+                }
+            }
+        }
+        return neglen;
+    }
+
+    public static void Q4() {
+        Scanner input = new Scanner(System.in);
+        int NUM_OF_ARRAYS = 672;
+        int LENGTH_OF_ARRAY = 83;
+        int[] arr = new int[LENGTH_OF_ARRAY];
+        int[] count = new int[LENGTH_OF_ARRAY+1];
+        for (int i=0; i<LENGTH_OF_ARRAY+1; i++) {
+            count[i] = 0;
+        }
+        for (int j=0; j<NUM_OF_ARRAYS; j++) {
+            for (int i=0; i<LENGTH_OF_ARRAY; i++) {
+                System.out.println("Enter number:");
+                arr[i] = input.nextInt();
+            }
+            count[negSequance(arr)]++;
+        }
+        for (int i=1; i<LENGTH_OF_ARRAY+1; i++) {
+            System.out.println("There are "+ count[i] + " arrays with negative sequence of " + i);
+        }
+        System.out.println("There are "+ count[0] + " arrays with no negative sequence at all!");
+    }
+
+
     public static void main(String[] args) {
-        Q2();
-        Q3();
+//        Q2();
+//        Q3();
+        Q4();
     }
 }
