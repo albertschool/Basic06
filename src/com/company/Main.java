@@ -141,10 +141,54 @@ public class Main { // 1-D Array
         System.out.println("There are "+ count[0] + " arrays with no negative sequence at all!");
     }
 
+    public static int reduction (int num, int students) {
+        int red1 = 0, red2;
+        if (num > 6) {
+            red1 = 100;
+        }
+        red2 = 40 * students;
+        if (red2 > red1) {
+            return red2;
+        } else {
+            return red1;
+        }
+    }
+
+    public static int sumReductions (int n) {
+        Scanner input = new Scanner(System.in);
+        int sum = 0, num, students;
+        for (int i=0; i<n; i++) {
+            System.out.println("Enter number of persons in family:");
+            num = input.nextInt();
+            System.out.println("Enter number of students in family:");
+            students = input.nextInt();
+            sum += reduction(num, students);
+        }
+        return sum;
+    }
+
+    public static void Q5() {
+        Scanner input = new Scanner(System.in);
+        int CITIES = 10;
+        int[] rdc = new int[CITIES];
+        for (int i=0; i<CITIES; i++) {
+            rdc[i] = 500;
+        }
+        int families;
+        for (int i=0; i<CITIES; i++) {
+            System.out.println("Enter number of families in city "+i+":");
+            families = input.nextInt();
+            if (sumReductions(families) > rdc[i]) {
+                System.out.println("In city "+i+" the reduction is higher then allowance");
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
 //        Q2();
 //        Q3();
-        Q4();
+//        Q4();
+        Q5();
     }
 }
