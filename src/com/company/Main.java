@@ -184,10 +184,29 @@ public class Main { // 1-D Array
         }
     }
 
+    public static int above(int[] arr, int num) {
+        int sum = 0;
+        for (int i=0; i<arr.length; i++) {
+            sum += arr[i];
+            if (sum > num) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static void Q8() {
+        int[] arr1 = {3,-2,6,2,1,3};
+        System.out.println(above(arr1,9));
+        int[] arr2 = {1,2,-2,0,7,3};
+        System.out.println(above(arr2,11));
+    }
+
     public static void main(String[] args) {
-//        Q2();
-//        Q3();
-//        Q4();
+        Q2();
+        Q3();
+        Q4();
         Q5();
+        Q8();
     }
 }
